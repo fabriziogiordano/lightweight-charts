@@ -78,6 +78,16 @@ function fillSizeAndY(
 			offsets.belowBar += shapeSize + shapeMargin;
 			return;
 		}
+		case 'price': {
+			let price = marker.price ? parseFloat(marker.price) : 0;
+			rendererItem.y = (priceScale.priceToCoordinate(price, firstValue)) as Coordinate;
+			if (rendererItem.text !== undefined) {
+				rendererItem.text.y = rendererItem.y + halfSize + shapeMargin + textHeight * (0.5 + Constants.TextMargin) as Coordinate;
+				offsets.belowBar += textHeight * (1 + 2 * Constants.TextMargin);
+			}
+			offsets.belowBar += shapeSize + shapeMargin;
+			return;
+		}
 	}
 
 	ensureNever(marker.position);
@@ -164,6 +174,7 @@ export class SeriesMarkersPaneView implements IUpdatablePaneView {
 				internalId: marker.internalId,
 				externalId: marker.id,
 				text: undefined,
+				price: marker.price,
 			}));
 			this._dataInvalidated = false;
 		}
