@@ -79,7 +79,9 @@ function fillSizeAndY(
 			return;
 		}
 		case 'price': {
-			rendererItem.y = priceScale.priceToCoordinate(marker.price ? parseFloat(marker.price) : 0, firstValue) + (marker.offset ? marker.offset : 0) as Coordinate;
+			const price = marker.price ? parseFloat(marker.price) : 0;
+			const offset = marker.offset ? marker.offset : 0;
+			rendererItem.y = priceScale.priceToCoordinate(price, firstValue) + offset as Coordinate;
 			return;
 		}
 	}
@@ -169,7 +171,7 @@ export class SeriesMarkersPaneView implements IUpdatablePaneView {
 				externalId: marker.id,
 				text: undefined,
 				price: marker.price,
-				offset: marker.offset
+				offset: marker.offset,
 			}));
 			this._dataInvalidated = false;
 		}
