@@ -602,6 +602,7 @@ export class Series<T extends SeriesType = SeriesType> extends PriceDataSource i
 				text: marker.text,
 				size: marker.size,
 				price: marker.price,
+				offset: marker.offset,
 			};
 		});
 	}

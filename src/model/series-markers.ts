@@ -11,6 +11,7 @@ export interface SeriesMarker<TimeType> {
 	text?: string;
 	size?: number;
 	price?: string;
+	offset?: number;
 }
 
 export interface InternalSeriesMarker<TimeType> extends SeriesMarker<TimeType> {
